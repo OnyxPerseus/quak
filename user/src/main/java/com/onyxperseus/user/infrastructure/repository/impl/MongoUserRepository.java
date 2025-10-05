@@ -1,5 +1,7 @@
 package com.onyxperseus.user.infrastructure.repository.impl;
 
+import java.util.List;
+
 import org.springframework.stereotype.Repository;
 
 import com.onyxperseus.user.domain.model.User;
@@ -27,6 +29,13 @@ public class MongoUserRepository implements UserRepository {
         UserEntity newUser = mapper.toEntity(user);
         newUser = springDataRepository.save(newUser);
         return mapper.toModel(newUser);
+    }
+
+    @Override
+    public List<User> findAllUsers() {
+        return springDataRepository.findAll().stream()
+                .map(mapper::toModel)
+                .toList();
     }
     
 }
