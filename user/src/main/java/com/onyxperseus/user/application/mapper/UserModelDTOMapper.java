@@ -9,7 +9,7 @@ import com.onyxperseus.user.interfaces.rest.v1.dto.ReadUserResource;
 import com.onyxperseus.user.interfaces.rest.v1.dto.WriteUserResource;
 
 @Mapper(componentModel = "spring",unmappedTargetPolicy = ReportingPolicy.IGNORE)
-public interface ModelDTOMapper {
+public interface UserModelDTOMapper {
     public User requestToModel(CreateUserRequest request);
     public ReadUserResource modelToReadResource(User request);
     public WriteUserResource modelToWriteResource(User request);

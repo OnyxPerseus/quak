@@ -8,7 +8,7 @@ import com.onyxperseus.user.domain.model.User;
 import com.onyxperseus.user.domain.repository.UserRepository;
 import com.onyxperseus.user.infrastructure.entity.UserEntity;
 import com.onyxperseus.user.infrastructure.mapper.EntityModelMapper;
-import com.onyxperseus.user.infrastructure.repository.SpringDataRepository;
+import com.onyxperseus.user.infrastructure.repository.SpringDataUserRepository;
 
 import lombok.RequiredArgsConstructor;
 
@@ -16,7 +16,7 @@ import lombok.RequiredArgsConstructor;
 @RequiredArgsConstructor
 public class MongoUserRepository implements UserRepository {
 
-    private final SpringDataRepository springDataRepository;
+    private final SpringDataUserRepository springDataRepository;
     private final EntityModelMapper mapper;
 
     @Override

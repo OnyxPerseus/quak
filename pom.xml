@@ -29,5 +29,6 @@
         <module>start</module>
         <module>user</module>
         <module>common</module>
+        <module>server</module>
     </modules>
 </project>

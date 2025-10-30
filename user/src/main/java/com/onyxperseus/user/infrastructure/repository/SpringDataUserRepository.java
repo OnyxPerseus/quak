@@ -5,5 +5,5 @@ import org.springframework.stereotype.Repository;
 
 import com.onyxperseus.user.infrastructure.entity.UserEntity;
 @Repository
-public interface SpringDataRepository extends MongoRepository<UserEntity, String> {
+public interface SpringDataUserRepository extends MongoRepository<UserEntity, String> {
 }

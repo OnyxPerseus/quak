@@ -4,7 +4,7 @@ import java.util.List;
 
 import org.springframework.stereotype.Service;
 
-import com.onyxperseus.user.application.mapper.ModelDTOMapper;
+import com.onyxperseus.user.application.mapper.UserModelDTOMapper;
 import com.onyxperseus.user.domain.model.User;
 import com.onyxperseus.user.domain.service.UserDomainService;
 import com.onyxperseus.user.interfaces.rest.v1.dto.CreateUserRequest;
@@ -18,7 +18,7 @@ import lombok.RequiredArgsConstructor;
 public class UserService {
     
     private final UserDomainService userDomainService;
-    private final ModelDTOMapper mapper;
+    private final UserModelDTOMapper mapper;
 
     public WriteUserResource createUser(CreateUserRequest requestUser) {
         User newUser =  mapper.requestToModel(requestUser);

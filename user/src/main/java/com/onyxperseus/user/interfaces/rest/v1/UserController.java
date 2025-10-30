@@ -1,9 +1,6 @@
 package com.onyxperseus.user.interfaces.rest.v1;
 
-import java.util.List;
-
 import org.springframework.http.HttpStatus;
-import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -13,7 +10,6 @@ import org.springframework.web.bind.annotation.RestController;
 import com.onyxperseus.common.ApiResponse;
 import com.onyxperseus.user.application.service.UserService;
 import com.onyxperseus.user.interfaces.rest.v1.dto.CreateUserRequest;
-import com.onyxperseus.user.interfaces.rest.v1.dto.ReadUserResource;
 import com.onyxperseus.user.interfaces.rest.v1.dto.WriteUserResource;
 
 import jakarta.validation.Valid;
