@@ -22,7 +22,6 @@ public class Server {
     String name;
     String icon;
     Set<String> channels;
-    Set<User> members;
     String ownerId;
     Instant createdAt;
     Instant updatedAt;

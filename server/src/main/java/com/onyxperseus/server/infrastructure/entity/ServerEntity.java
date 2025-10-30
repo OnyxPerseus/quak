@@ -7,8 +7,6 @@ import org.springframework.data.annotation.CreatedDate;
 import org.springframework.data.annotation.LastModifiedDate;
 import org.springframework.data.mongodb.core.mapping.Document;
 
-import com.onyxperseus.server.domain.model.User;
-
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
@@ -25,7 +23,6 @@ public class ServerEntity {
     private String name;
     private String icon;
     private Set<String> channels;
-    private Set<User> members;
     private String ownerId;
 
     @CreatedDate
