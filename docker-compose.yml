@@ -11,7 +11,6 @@ services:
       - "8080:8080"
     environment:
       - SPRING_PROFILES_ACTIVE=${SPRING_PROFILE:-dev}
-      - MONGO_PASS=${MONGO_PASS}
     volumes:
       - .:/app
     hostname: quak
@@ -25,9 +24,27 @@ services:
       - "27017:27017"
     volumes:
       - mongo-data:/data/db
-    environment:
-      - MONGO_INITDB_ROOT_USERNAME=root
-      - MONGO_INITDB_ROOT_PASSWORD=${MONGO_PASS}
+    command: ["--replSet", "rs0", "--bind_ip_all"]
+    healthcheck:
+      test: |
+        mongosh --quiet --eval "
+        try {
+          var status = rs.status();
+          if (status.myState === 1) {
+            quit(0);
+          }
+          quit(1);
+        } catch(e) {
+          rs.initiate({
+            _id: 'rs0',
+            members: [{ _id: 0, host: 'quak-db:27017' }]
+          });
+          quit(1);
+        }"
+      interval: 3s
+      timeout: 2s
+      retries: 20
+      start_period: 5s
   kafka:
     hostname: quak-kafka
     image: apache/kafka:4.1.1
@@ -40,6 +57,7 @@ services:
       - KAFKA_ADVERTISED_LISTENERS=PLAINTEXT://quak-kafka:9092
       - KAFKA_CONTROLLER_QUORUM_VOTERS=1@quak-kafka:9093
       - KAFKA_CONTROLLER_LISTENER_NAMES=CONTROLLER
+      - KAFKA_OFFSET_REPLICATION_FACTOR=1
       - KAFKA_LISTENER_SECURITY_PROTOCOL_MAP=CONTROLLER:PLAINTEXT,PLAINTEXT:PLAINTEXT
     volumes:
       - kafka-data:/var/lib/kafka/data

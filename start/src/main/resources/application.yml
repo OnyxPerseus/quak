@@ -8,8 +8,5 @@ spring:
     mongodb:
       host: quak-db
       port: 27017
-      username: root
-      password: ${MONGO_PASS}
       database: quak
-      authentication-database: admin
       auto-index-creation: true
