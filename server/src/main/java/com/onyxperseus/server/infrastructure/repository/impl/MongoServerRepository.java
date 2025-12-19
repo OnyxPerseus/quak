@@ -23,6 +23,4 @@ public class MongoServerRepository implements ServerRepository {
         ServerEntity newServer = springDataServerRepository.save(serverEntity);
         return serverMapper.entityToModel(newServer);
     }
-    }
-    
 }
