@@ -1,5 +1,7 @@
 package com.onyxperseus.user.infrastructure.entity;
 
+import java.util.Set;
+
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.index.Indexed;
 import org.springframework.data.mongodb.core.mapping.Document;
@@ -27,4 +29,15 @@ public class UserEntity {
     private String phone;
     private String password;
     private int gender;
+    private Set<Server> joinedServers;
+
+    @Data
+    @AllArgsConstructor
+    @NoArgsConstructor
+    @Builder
+    public static class Server{
+        private String id;
+        private String name;
+        private String avatarURL;
+    }
 }

@@ -3,6 +3,7 @@ package com.onyxperseus.server.infrastructure.config;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
+import com.onyxperseus.server.domain.repository.ServerMemberRepository;
 import com.onyxperseus.server.domain.repository.ServerRepository;
 import com.onyxperseus.server.domain.service.ServerDomainService;
 
@@ -10,7 +11,7 @@ import com.onyxperseus.server.domain.service.ServerDomainService;
 public class ServerServiceDomainConfig {
     
     @Bean
-    public ServerDomainService serverDomainService(ServerRepository serverRepository) {
-        return new ServerDomainService(serverRepository);
+    public ServerDomainService serverDomainService(ServerRepository serverRepository,ServerMemberRepository serverMemberRepository) {
+        return new ServerDomainService(serverRepository, serverMemberRepository);
     }
 }

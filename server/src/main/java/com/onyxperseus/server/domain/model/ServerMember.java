@@ -1,28 +1,23 @@
 package com.onyxperseus.server.domain.model;
 
 import java.time.Instant;
-import java.util.Set;
 
 import lombok.AccessLevel;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
-import lombok.Getter;
+import lombok.Data;
 import lombok.NoArgsConstructor;
-import lombok.Setter;
 import lombok.experimental.FieldDefaults;
 
-@Getter
-@Setter
+@Data
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
 @FieldDefaults(level = AccessLevel.PRIVATE)
-public class Server {
+public class ServerMember {
     String id;
-    String name;
-    String avatarURL;
-    Set<String> channels;
-    String ownerId;
-    int memberCount;
+    String serverId;
+    String userId;
+    String nickname;
     Instant createdAt;
 }

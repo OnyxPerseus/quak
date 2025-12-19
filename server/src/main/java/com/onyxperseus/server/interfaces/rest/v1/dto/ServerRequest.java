@@ -1,4 +1,4 @@
-package com.onyxperseus.server.interfaces.v1.rest.dto;
+package com.onyxperseus.server.interfaces.rest.v1.dto;
 
 import jakarta.validation.constraints.NotNull;
 
