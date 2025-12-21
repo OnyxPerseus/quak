@@ -39,7 +39,7 @@ public class MongoServerMemberRepository implements ServerMemberRepository {
             serverMemberEntities.stream().map(ServerMemberEntity::getServerId).toList()
         );
         return serverEntities.stream()
-            .map(serverMapper::entityToModel)
+            .map(serverMapper::toModel)
             .toList();
     }
 }

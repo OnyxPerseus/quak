@@ -19,8 +19,26 @@ public class MongoServerRepository implements ServerRepository {
     
     @Override
     public Server save(Server server) {
-        ServerEntity serverEntity = serverMapper.modelToEntity(server);
+        ServerEntity serverEntity = serverMapper.toEntity(server);
         ServerEntity newServer = springDataServerRepository.save(serverEntity);
-        return serverMapper.entityToModel(newServer);
+        return serverMapper.toModel(newServer);
+    }
+
+    @Override
+    public Server findById(String id) {
+        ServerEntity serverEntity = findEntityById(id);
+        return serverMapper.toModel(serverEntity);
+    }
+
+    @Override
+    public Server update(String id, Server server) {
+        ServerEntity dbServer = findEntityById(id);
+        ServerEntity newServerEntity = serverMapper.toEntity(server);
+        serverMapper.updateEntity(newServerEntity, dbServer);
+        return serverMapper.toModel(springDataServerRepository.save(dbServer));
+    }
+    
+    private ServerEntity findEntityById(String id) {
+        return springDataServerRepository.findById(id).orElseThrow(() -> new RuntimeException("Server not found"));
     }
 }

@@ -9,10 +9,10 @@ import com.onyxperseus.server.infrastructure.entity.ServerEntity;
 
 @Mapper(componentModel = "spring")
 public interface ServerMapper {
-    ServerEntity modelToEntity(Server server);
-    Server entityToModel(ServerEntity entity);
+    ServerEntity toEntity(Server server);
+    Server toModel(ServerEntity entity);
     @Mapping(target = "id", ignore = true)
     @Mapping(target = "createdAt", ignore = true)
     @Mapping(target = "channels", ignore = true)
-    void mapToUpdateNewEntity(ServerEntity newEntity,@MappingTarget ServerEntity entity);
+    void updateEntity(ServerEntity newEntity,@MappingTarget ServerEntity entity);
 }

@@ -23,4 +23,8 @@ public class ServerDomainService {
         );
         return newServer;
     }
+
+    public Server updateServer(String id, Server server) {
+        return serverRepository.update(id, server);
+    }
 }
