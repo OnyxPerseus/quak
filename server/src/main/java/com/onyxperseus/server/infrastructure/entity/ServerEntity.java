@@ -20,7 +20,7 @@ public class ServerEntity {
     @EqualsAndHashCode.Include
     private String id;
     private String name;
-    private String avatarURL;
+    private String icon;
     private Set<String> channels;
     private String ownerId;
     private int memberCount;

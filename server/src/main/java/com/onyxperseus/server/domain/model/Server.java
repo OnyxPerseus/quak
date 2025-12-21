@@ -20,7 +20,7 @@ import lombok.experimental.FieldDefaults;
 public class Server {
     String id;
     String name;
-    String avatarURL;
+    String icon;
     Set<String> channels;
     String ownerId;
     int memberCount;

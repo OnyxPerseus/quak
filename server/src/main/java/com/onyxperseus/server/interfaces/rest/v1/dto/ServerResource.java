@@ -6,7 +6,7 @@ import java.util.Set;
 public record ServerResource(
     String id,
     String name,
-    String avatar,
+    String icon,
     Set<String> channels,
     String ownerId,
     Instant createdAt
