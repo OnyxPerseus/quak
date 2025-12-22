@@ -1,4 +1,4 @@
-package com.onyxperseus.user.infrastructure.config;
+package com.onyxperseus.user.application.config;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
