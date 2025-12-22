@@ -4,9 +4,6 @@ services:
   java-app:
     build:
       context: ./docker/java
-      args:
-        UID: ${UID:-1000}
-        GID: ${GID:-1000}
     ports:
       - "8080:8080"
     environment:
