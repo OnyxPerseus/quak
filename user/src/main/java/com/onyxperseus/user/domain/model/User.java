@@ -2,6 +2,8 @@ package com.onyxperseus.user.domain.model;
 
 import java.util.Set;
 
+import com.onyxperseus.user.domain.enums.Gender;
+
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -19,7 +21,7 @@ public class User {
     private String email;
     private String phone;
     private String password;
-    private int gender;
+    private Gender gender;
     private Set<Server> joinedServers;
     
     @Data

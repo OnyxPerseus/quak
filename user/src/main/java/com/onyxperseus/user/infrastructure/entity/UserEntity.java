@@ -6,6 +6,8 @@ import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.index.Indexed;
 import org.springframework.data.mongodb.core.mapping.Document;
 
+import com.onyxperseus.user.domain.enums.Gender;
+
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -28,7 +30,7 @@ public class UserEntity {
     private String email;
     private String phone;
     private String password;
-    private int gender;
+    private Gender gender;
     private Set<Server> joinedServers;
 
     @Data
