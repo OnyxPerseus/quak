@@ -20,7 +20,7 @@ public class UserService {
     public UserResource createUser(CreateUserRequest requestUser) {
         User newUser =  mapper.requestToModel(requestUser);
         newUser = userDomainService.createUser(newUser);
-        return mapper.modelToWriteResource(newUser);
+        return mapper.toResource(newUser);
     }
 
     // public List<ReadUserResource> getAllUsers() {
