@@ -24,9 +24,9 @@ public class UserEntity {
     @EqualsAndHashCode.Include
     @Id
     private String id;
+    @Indexed(unique = true)
     private String userName;
     private String displayName;
-    @Indexed(unique = true)
     private String email;
     private String phone;
     private String password;
@@ -40,6 +40,6 @@ public class UserEntity {
     public static class Server{
         private String id;
         private String name;
-        private String avatarURL;
+        private String iconURL;
     }
 }
