@@ -1,13 +1,8 @@
 package com.onyxperseus.user.domain.model;
 
-import java.util.Set;
-
-import com.onyxperseus.user.domain.enums.Gender;
 import com.onyxperseus.user.domain.exception.InvalidValueException;
 
-import lombok.AllArgsConstructor;
 import lombok.Builder;
-import lombok.Data;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -22,18 +17,8 @@ public class User {
     private Phone phone;
     private String password;
     private Gender gender;
-    private Set<Server> joinedServers;
-    
-    @Data
-    @Builder
-    @AllArgsConstructor
-    public static class Server{
-        private String id;
-        private String name;
-        private String iconURL;
-    }
 
-    public User(String id, UserName userName, String displayName,Email email, Phone phone, String password, Gender gender, Set<Server> joinedServers) {
+    public User(String id, UserName userName, String displayName,Email email, Phone phone, String password, Gender gender) {
         if (userName == null) {
             throw new InvalidValueException("Tên tài khoản không được để trống");
         }
@@ -53,6 +38,5 @@ public class User {
         this.phone = phone;
         this.password = password;
         this.gender = gender;
-        this.joinedServers = joinedServers;
     }
 }

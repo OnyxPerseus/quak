@@ -1,12 +1,10 @@
 package com.onyxperseus.user.infrastructure.entity;
 
-import java.util.Set;
-
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.index.Indexed;
 import org.springframework.data.mongodb.core.mapping.Document;
 
-import com.onyxperseus.user.domain.enums.Gender;
+import com.onyxperseus.user.domain.model.Gender;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -31,15 +29,4 @@ public class UserEntity {
     private String phone;
     private String password;
     private Gender gender;
-    private Set<Server> joinedServers;
-
-    @Data
-    @AllArgsConstructor
-    @NoArgsConstructor
-    @Builder
-    public static class Server{
-        private String id;
-        private String name;
-        private String iconURL;
-    }
 }

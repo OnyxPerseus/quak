@@ -8,4 +8,5 @@ public interface UserRepository {
     List<User> findAllUsers();
     User findUserById(String userId);
     User createUser(User user);
+    User updateUser(User user);
 }

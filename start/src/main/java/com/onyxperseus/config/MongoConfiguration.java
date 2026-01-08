@@ -1,4 +1,4 @@
-package com.onyxperseus.start.config;
+package com.onyxperseus.config;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;

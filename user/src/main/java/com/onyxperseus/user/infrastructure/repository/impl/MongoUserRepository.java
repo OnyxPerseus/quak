@@ -38,4 +38,10 @@ public class MongoUserRepository implements UserRepository {
                 .toList();
     }
     
+    @Override
+    public User updateUser(User user) {
+        UserEntity userEntity = mapper.toEntity(user);
+        userEntity = springDataRepository.save(userEntity);
+        return mapper.toModel(userEntity);
+    }
 }

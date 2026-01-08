@@ -1,0 +1,7 @@
+quak:
+  user:
+    kafka:
+      topics:
+          server-created: server.created
+      consumer:
+        group-id: quak-user

@@ -1,6 +1,7 @@
 package com.onyxperseus.server.application.mapper;
 
 import org.mapstruct.Mapper;
+import org.mapstruct.Mapping;
 import org.mapstruct.ReportingPolicy;
 
 import com.onyxperseus.server.domain.model.Server;
@@ -12,5 +13,6 @@ import com.onyxperseus.server.interfaces.rest.v1.dto.UpdateServerRequest;
 public interface ServerDTOMapper {
     public Server toModel(CreateServerRequest request);
     public Server toModel(UpdateServerRequest request);
+    @Mapping(target = "memberCount", source = "memberCount.value")
     public ServerResource toResource(Server server);
 }

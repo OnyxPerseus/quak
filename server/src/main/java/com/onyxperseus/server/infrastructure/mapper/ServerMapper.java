@@ -9,7 +9,9 @@ import com.onyxperseus.server.infrastructure.entity.ServerEntity;
 
 @Mapper(componentModel = "spring")
 public interface ServerMapper {
+    @Mapping(target = "memberCount", source = "memberCount.value")
     ServerEntity toEntity(Server server);
+    @Mapping(target = "memberCount.value", source = "memberCount")
     Server toModel(ServerEntity entity);
     @Mapping(target = "id", ignore = true)
     @Mapping(target = "createdAt", ignore = true)

@@ -1,14 +1,14 @@
-package com.onyxperseus.server.interfaces.rest.v1.dto;
+package com.onyxperseus.server.domain.event;
 
 import java.time.Instant;
-import java.util.Set;
 
-public record ServerResource(
+import com.onyxperseus.type.Event;
+
+public record ServerCreatedEvent(
     String id,
     String name,
     String iconURL,
-    Set<String> channels,
     String ownerId,
     int memberCount,
     Instant createdAt
-) {}
+) implements Event {}

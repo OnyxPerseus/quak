@@ -17,6 +17,10 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.PatchMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 
+import java.util.List;
+
+import org.springframework.web.bind.annotation.GetMapping;
+
 
 @RestController
 @RequestMapping("/servers")
@@ -36,4 +40,12 @@ public class ServerController {
         ServerResource resource =  serverService.updateServer(id, request);
         return ApiResponse.success(null, resource);
     }
+
+    @GetMapping("/joined-server")
+    public ApiResponse<List<ServerResource>> getJoinedServers() {
+        String userId = "695d2908e52ffaf560b916d1";
+        List<ServerResource> resources = serverService.getServersByUserId(userId);
+        return ApiResponse.success(null, resources);
+    }
+    
 }

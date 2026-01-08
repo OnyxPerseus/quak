@@ -3,8 +3,9 @@ package com.onyxperseus.server.domain.model;
 import java.time.Instant;
 import java.util.Set;
 
+import com.onyxperseus.server.domain.exception.InvalidValueException;
+
 import lombok.AccessLevel;
-import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -13,16 +14,34 @@ import lombok.experimental.FieldDefaults;
 
 @Getter
 @Setter
-@AllArgsConstructor
 @NoArgsConstructor
 @Builder
 @FieldDefaults(level = AccessLevel.PRIVATE)
 public class Server {
     String id;
     String name;
-    String icon;
+    String iconURL;
     Set<String> channels;
     String ownerId;
-    int memberCount;
+    MemberCount memberCount;
     Instant createdAt;
+
+    public Server(String id, String name, String iconURL, Set<String> channels, String ownerId, MemberCount memberCount, Instant createdAt) {
+        if (name == null || name.isBlank()) {
+            throw new InvalidValueException("Tên server không được để trống");
+        }
+        if (memberCount == null) {
+            memberCount = new MemberCount(0);
+        }
+        if (createdAt == null) {
+            createdAt = Instant.now();
+        }
+        this.id = id;
+        this.name = name;
+        this.iconURL = iconURL;
+        this.channels = channels;
+        this.ownerId = ownerId;
+        this.memberCount = memberCount;
+        this.createdAt = createdAt;
+    }
 }
