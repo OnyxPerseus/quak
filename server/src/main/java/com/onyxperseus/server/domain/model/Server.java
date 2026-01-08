@@ -1,6 +1,5 @@
 package com.onyxperseus.server.domain.model;
 
-import java.time.Instant;
 import java.util.Set;
 
 import com.onyxperseus.server.domain.exception.InvalidValueException;
@@ -24,17 +23,13 @@ public class Server {
     Set<String> channels;
     String ownerId;
     MemberCount memberCount;
-    Instant createdAt;
 
-    public Server(String id, String name, String iconURL, Set<String> channels, String ownerId, MemberCount memberCount, Instant createdAt) {
+    public Server(String id, String name, String iconURL, Set<String> channels, String ownerId, MemberCount memberCount) {
         if (name == null || name.isBlank()) {
             throw new InvalidValueException("Tên server không được để trống");
         }
         if (memberCount == null) {
             memberCount = new MemberCount(0);
-        }
-        if (createdAt == null) {
-            createdAt = Instant.now();
         }
         this.id = id;
         this.name = name;
@@ -42,6 +37,5 @@ public class Server {
         this.channels = channels;
         this.ownerId = ownerId;
         this.memberCount = memberCount;
-        this.createdAt = createdAt;
     }
 }
