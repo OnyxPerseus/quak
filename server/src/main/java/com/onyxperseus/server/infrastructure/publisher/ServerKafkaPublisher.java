@@ -3,10 +3,10 @@ package com.onyxperseus.server.infrastructure.publisher;
 import org.springframework.kafka.core.KafkaTemplate;
 import org.springframework.stereotype.Component;
 
+import com.onyxperseus.common.type.Event;
 import com.onyxperseus.server.application.port.ServerEventPublisher;
 import com.onyxperseus.server.config.ServerKafkaTopics;
 import com.onyxperseus.server.domain.event.ServerCreatedEvent;
-import com.onyxperseus.type.Event;
 
 import lombok.RequiredArgsConstructor;
 

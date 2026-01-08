@@ -3,12 +3,14 @@ package com.onyxperseus.user.domain.model;
 import com.onyxperseus.user.domain.exception.InvalidValueException;
 
 import lombok.Builder;
+import lombok.EqualsAndHashCode;
 import lombok.Getter;
-import lombok.Setter;
+import lombok.ToString;
 
 @Builder
 @Getter
-@Setter
+@EqualsAndHashCode
+@ToString
 public class User {
     private String id;
     private UserName userName;

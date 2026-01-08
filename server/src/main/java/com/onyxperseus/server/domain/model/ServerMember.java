@@ -4,13 +4,15 @@ import com.onyxperseus.server.domain.exception.InvalidValueException;
 
 import lombok.AccessLevel;
 import lombok.Builder;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.EqualsAndHashCode;
+import lombok.Getter;
+import lombok.ToString;
 import lombok.experimental.FieldDefaults;
 
-@Data
-@NoArgsConstructor
+@Getter
 @Builder
+@EqualsAndHashCode
+@ToString
 @FieldDefaults(level = AccessLevel.PRIVATE)
 public class ServerMember {
     String id;

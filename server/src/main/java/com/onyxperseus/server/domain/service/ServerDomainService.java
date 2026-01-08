@@ -1,5 +1,9 @@
 package com.onyxperseus.server.domain.service;
 
+import java.util.Random;
+
+import com.onyxperseus.common.util.RandomStringUltil;
+import com.onyxperseus.server.domain.model.Invitaion;
 import com.onyxperseus.server.domain.model.Server;
 import com.onyxperseus.server.domain.model.ServerMember;
 import com.onyxperseus.server.domain.repository.ServerMemberRepository;
@@ -27,4 +31,10 @@ public class ServerDomainService {
     public Server updateServer(String id, Server server) {
         return serverRepository.update(id, server);
     }
+
+    // public Invitaion createInvitation(Invitaion invitaion) {
+    //     String code = RandomStringUltil.generateSecureRandomString(8);
+    //     invitaion.
+    //     return null;
+    // }
 }

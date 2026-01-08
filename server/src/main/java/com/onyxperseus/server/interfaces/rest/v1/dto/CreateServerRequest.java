@@ -5,5 +5,5 @@ import jakarta.validation.constraints.NotEmpty;
 public record CreateServerRequest(
     @NotEmpty(message = "Name is required")
     String name,
-    String icon
+    String iconURL
 ){}
