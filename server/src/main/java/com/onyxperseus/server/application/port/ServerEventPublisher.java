@@ -1,7 +1,7 @@
 package com.onyxperseus.server.application.port;
 
-import com.onyxperseus.common.type.Event;
+import com.onyxperseus.common.type.DomainEvent;
 
 public interface ServerEventPublisher {
-    void publishEvent(Event event);
+    void publishEvent(DomainEvent event);
 }

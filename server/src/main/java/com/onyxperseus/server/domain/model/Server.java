@@ -5,7 +5,6 @@ import java.util.Set;
 import com.onyxperseus.server.domain.exception.InvalidValueException;
 
 import lombok.AccessLevel;
-import lombok.Builder;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.ToString;
@@ -37,5 +36,14 @@ public class Server {
         this.iconURL = iconURL;
         this.ownerId = ownerId;
         this.memberCount = memberCount;
+    }
+
+    public void updateServerInfo(String name, String iconURL) {
+        if (name != null && !name.isBlank()) {
+            this.name = name;
+        }
+        if (iconURL != null && !iconURL.isBlank()) {
+            this.iconURL = iconURL;
+        }
     }
 }

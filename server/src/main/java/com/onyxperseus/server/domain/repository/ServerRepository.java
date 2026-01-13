@@ -6,4 +6,5 @@ public interface ServerRepository {
     Server findById(String id);
     Server save(Server server);
     Server update(String id, Server server);
+    boolean existsById(String id);
 }

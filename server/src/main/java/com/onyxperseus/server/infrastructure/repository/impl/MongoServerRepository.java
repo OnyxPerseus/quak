@@ -39,6 +39,11 @@ public class MongoServerRepository implements ServerRepository {
     }
     
     private ServerEntity findEntityById(String id) {
-        return springDataServerRepository.findById(id).orElseThrow(() -> new RuntimeException("Server not found"));
+        return springDataServerRepository.findById(id).get();
+    }
+
+    @Override
+    public boolean existsById(String id) {
+        return springDataServerRepository.existsById(id);
     }
 }

@@ -25,11 +25,13 @@ public class ServerService {
 
     @Transactional
     public ServerResource createServer(CreateServerRequest request){
-        Server newServer = Server.builder()
-            .name(request.name())
-            .iconURL(request.iconURL())
-            .ownerId("695d2908e52ffaf560b916d1")
-            .build();
+        Server newServer = new Server(
+            null,
+            request.name(),
+            request.iconURL(),
+            "695d2908e52ffaf560b916d1",
+            null
+        );
         newServer = serverDomainService.createServer(newServer);
         return dtoMapper.toResource(newServer);
     }
