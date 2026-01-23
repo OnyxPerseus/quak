@@ -2,12 +2,12 @@ package com.onyxperseus.server.domain.service;
 
 import java.time.Instant;
 
-import com.onyxperseus.server.domain.exception.InvalidValueException;
 import com.onyxperseus.server.domain.model.Expires;
 import com.onyxperseus.server.domain.model.Invitation;
 import com.onyxperseus.server.domain.port.StringRandomPort;
 import com.onyxperseus.server.domain.repository.InvitationRepository;
 import com.onyxperseus.server.domain.repository.ServerRepository;
+import com.onyxperseus.shared.NotFoundException;
 
 import lombok.RequiredArgsConstructor;
 
@@ -19,7 +19,7 @@ public class InvitationDomainService {
     
     public Invitation createInvitation(String serverId, String creatorId, Expires expires) {
         if (!serverRepository.existsById(serverId)) {
-            throw new InvalidValueException("Server không tồn tại");
+            throw new NotFoundException("Server");
         }
 
         String code = stringRandomPort.generateRandomString(8);

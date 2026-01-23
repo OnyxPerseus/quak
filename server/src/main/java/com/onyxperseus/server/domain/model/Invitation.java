@@ -2,7 +2,8 @@ package com.onyxperseus.server.domain.model;
 
 import java.time.Instant;
 
-import com.onyxperseus.server.domain.exception.InvalidValueException;
+import com.onyxperseus.shared.InvalidValueException;
+import com.onyxperseus.shared.MissingValueException;
 
 import lombok.AccessLevel;
 import lombok.EqualsAndHashCode;
@@ -27,19 +28,19 @@ public class Invitation {
 
     public Invitation(String id, String serverId, String creatorId, String code, int usageCount, Expires expires, Instant expiresAt, Instant createdAt) {
         if (serverId == null || serverId.isBlank()) {
-            throw new InvalidValueException("Server ID không được để trống");
+            throw new MissingValueException("serverId");
         }
         if (creatorId == null || creatorId.isBlank()) {
-            throw new InvalidValueException("Creator ID không được để trống");
+            throw new MissingValueException("creatorId");
         }
         if (code == null || code.isBlank()) {
-            throw new InvalidValueException("Mã không được để trống");
+            throw new MissingValueException("code");
         }
         if (usageCount < 0) {
-            throw new InvalidValueException("Số lượt sử dụng không được âm");
+            throw new InvalidValueException("usageCount must be greater than 0");
         }
         if (expires == null) {
-            throw new InvalidValueException("Thời hạn không được để trống");
+            throw new MissingValueException("expires");
         }
         
         this.id = id;

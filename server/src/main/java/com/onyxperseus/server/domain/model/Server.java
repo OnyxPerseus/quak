@@ -2,7 +2,7 @@ package com.onyxperseus.server.domain.model;
 
 import java.util.Set;
 
-import com.onyxperseus.server.domain.exception.InvalidValueException;
+import com.onyxperseus.shared.MissingValueException;
 
 import lombok.AccessLevel;
 import lombok.EqualsAndHashCode;
@@ -25,7 +25,7 @@ public class Server {
 
     public Server(String id, String name, String iconURL, String ownerId, MemberCount memberCount) {
         if (name == null || name.isBlank()) {
-            throw new InvalidValueException("Tên server không được để trống");
+            throw new MissingValueException("name");
         }
         if (memberCount == null) {
             memberCount = new MemberCount(0);

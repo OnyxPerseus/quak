@@ -3,7 +3,7 @@ package com.onyxperseus.server.infrastructure.publisher;
 import org.springframework.kafka.core.KafkaTemplate;
 import org.springframework.stereotype.Component;
 
-import com.onyxperseus.common.type.DomainEvent;
+import com.onyxperseus.shared.DomainEvent;
 import com.onyxperseus.server.application.port.ServerEventPublisher;
 import com.onyxperseus.server.config.ServerKafkaTopics;
 import com.onyxperseus.server.domain.event.ServerCreatedEvent;

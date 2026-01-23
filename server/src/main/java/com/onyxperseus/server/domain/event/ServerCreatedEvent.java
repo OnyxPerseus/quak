@@ -1,6 +1,6 @@
 package com.onyxperseus.server.domain.event;
 
-import com.onyxperseus.common.type.DomainEvent;
+import com.onyxperseus.shared.DomainEvent;
 
 public record ServerCreatedEvent(
     String id,
