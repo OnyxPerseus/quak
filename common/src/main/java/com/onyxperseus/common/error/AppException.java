@@ -1,4 +1,4 @@
-package com.onyxperseus.common.type;
+package com.onyxperseus.common.error;
 
 import lombok.Getter;
 

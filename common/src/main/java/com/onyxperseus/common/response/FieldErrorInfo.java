@@ -1,4 +1,4 @@
-package com.onyxperseus.common.app.response;
+package com.onyxperseus.common.response;
 
 public record FieldErrorInfo(
     String field,

@@ -1,4 +1,4 @@
-package com.onyxperseus.common.app.response;
+package com.onyxperseus.common.response;
 
 import java.util.List;
 
