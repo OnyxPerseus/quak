@@ -1,6 +1,7 @@
 package com.onyxperseus.user.domain.model;
 
-import com.onyxperseus.shared.MissingValueException;
+import com.onyxperseus.shared.InvalidValueException;
+import com.onyxperseus.user.domain.exception.UserErrorType;
 
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
@@ -19,13 +20,13 @@ public class User {
 
     public User(String id, UserName userName, String displayName,Email email, Phone phone, Gender gender) {
         if (userName == null) {
-            throw new MissingValueException("userName");
+            throw new InvalidValueException(UserErrorType.USERNAME_REQUIRED);
         }
         if (email == null) {
-            throw new MissingValueException("email");
+            throw new InvalidValueException(UserErrorType.EMAIL_REQUIRED);
         }
         if (phone == null) {
-            throw new MissingValueException("phone");
+            throw new InvalidValueException(UserErrorType.PHONE_REQUIRED);
         }
         this.id = id;
         this.userName = userName;

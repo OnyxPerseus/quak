@@ -1,7 +1,12 @@
 package com.onyxperseus.shared;
 
-public class InvalidValueException extends DomainException {
-    public InvalidValueException(String message) {
-        super(message);
+import lombok.Getter;
+
+@Getter
+public class InvalidValueException extends RuntimeException {
+    private final ErrorType errorType;
+    
+    public InvalidValueException(ErrorType errorType) {
+        this.errorType = errorType;
     }
 }

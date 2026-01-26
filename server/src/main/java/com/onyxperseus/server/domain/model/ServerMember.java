@@ -1,6 +1,7 @@
 package com.onyxperseus.server.domain.model;
 
-import com.onyxperseus.shared.MissingValueException;
+import com.onyxperseus.server.domain.exception.ServerMemberErrorType;
+import com.onyxperseus.shared.InvalidValueException;
 
 import lombok.AccessLevel;
 import lombok.EqualsAndHashCode;
@@ -21,10 +22,10 @@ public class ServerMember {
 
     public ServerMember(String id, String serverId, String userId, String nickname) {
         if (serverId == null || serverId.isBlank()) {
-            throw new MissingValueException("serverId");
+            throw new InvalidValueException(ServerMemberErrorType.SERVER_ID_REQUIRED);
         }
         if (userId == null || userId.isBlank()) {
-            throw new MissingValueException("userId");
+            throw new InvalidValueException(ServerMemberErrorType.USER_ID_REQUIRED);
         }
         this.id = id;
         this.serverId = serverId;

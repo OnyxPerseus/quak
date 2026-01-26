@@ -12,7 +12,7 @@ import com.onyxperseus.common.error.AppException;
 import com.onyxperseus.common.error.ErrorCode;
 import com.onyxperseus.common.response.ErrorData;
 import com.onyxperseus.common.response.FieldErrorInfo;
-import com.onyxperseus.shared.DomainException;
+import com.onyxperseus.shared.InvalidValueException;
 
 import lombok.RequiredArgsConstructor;
 
@@ -45,10 +45,10 @@ public class GlobalExceptionHandler {
                 .body(ApiResponse.fail("Invalid request", errorData));
     }
 
-    @ExceptionHandler(DomainException.class)
-    public ResponseEntity<ApiResponse<Object>> handleDomainException(DomainException ex) {
+    @ExceptionHandler(InvalidValueException.class)
+    public ResponseEntity<ApiResponse<Object>> handleDomainException(InvalidValueException ex) {
         return ResponseEntity
                 .status(HttpStatus.UNPROCESSABLE_ENTITY)
-                .body(ApiResponse.fail(ex.getMessage(), null));
+                .body(ApiResponse.fail(ex.getErrorType().getMessage(), null));
     }
 }

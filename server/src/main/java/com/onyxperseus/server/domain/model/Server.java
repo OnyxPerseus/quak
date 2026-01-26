@@ -2,7 +2,8 @@ package com.onyxperseus.server.domain.model;
 
 import java.util.Set;
 
-import com.onyxperseus.shared.MissingValueException;
+import com.onyxperseus.server.domain.exception.ServerErrorType;
+import com.onyxperseus.shared.InvalidValueException;
 
 import lombok.AccessLevel;
 import lombok.EqualsAndHashCode;
@@ -25,7 +26,7 @@ public class Server {
 
     public Server(String id, String name, String iconURL, String ownerId, MemberCount memberCount) {
         if (name == null || name.isBlank()) {
-            throw new MissingValueException("name");
+            throw new InvalidValueException(ServerErrorType.NAME_REQUIRED);
         }
         if (memberCount == null) {
             memberCount = new MemberCount(0);
