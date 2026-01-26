@@ -5,8 +5,10 @@ import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.onyxperseus.common.ApiResponse;
+import com.onyxperseus.server.application.service.InvitationService;
 import com.onyxperseus.server.application.service.ServerService;
 import com.onyxperseus.server.interfaces.rest.v1.dto.CreateServerRequest;
+import com.onyxperseus.server.interfaces.rest.v1.dto.InvitationResource;
 import com.onyxperseus.server.interfaces.rest.v1.dto.ServerResource;
 import com.onyxperseus.server.interfaces.rest.v1.dto.UpdateServerRequest;
 
@@ -32,6 +34,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 public class ServerController {
     
     private final ServerService serverService;
+    private final InvitationService invitationService;
 
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
@@ -51,5 +54,11 @@ public class ServerController {
         String userId = "695d2908e52ffaf560b916d1";
         List<ServerResource> resources = serverService.getServersByUserId(userId);
         return ApiResponse.success(null, resources);
-    }    
+    }
+
+    @GetMapping("/{serverId}/invitations")
+    public ApiResponse<List<InvitationResource>> getInvitationsByServerId(@PathVariable("serverId") String serverId) {
+        List<InvitationResource> resources = invitationService.getInvitationsByServerId(serverId);
+        return ApiResponse.success(null, resources);
+    }
 }

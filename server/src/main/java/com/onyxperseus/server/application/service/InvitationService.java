@@ -1,5 +1,7 @@
 package com.onyxperseus.server.application.service;
 
+import java.util.List;
+
 import org.springframework.stereotype.Service;
 
 import com.onyxperseus.server.application.mapper.InvitationDTOMapper;
@@ -23,5 +25,12 @@ public class InvitationService {
             invitationDTOMapper.toExpires(request.expires())
         );
         return invitationDTOMapper.toResource(newInvitation);
+    }
+    
+    public List<InvitationResource> getInvitationsByServerId(String serverId) {
+        List<Invitation> invitations = invitationDomainService.getInvitationsByServerId(serverId);
+        return invitations.stream()
+            .map(invitationDTOMapper::toResource)
+            .toList();
     }
 }

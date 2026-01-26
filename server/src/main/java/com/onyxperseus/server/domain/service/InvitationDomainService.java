@@ -1,6 +1,7 @@
 package com.onyxperseus.server.domain.service;
 
 import java.time.Instant;
+import java.util.List;
 
 import com.onyxperseus.server.domain.model.Expires;
 import com.onyxperseus.server.domain.model.Invitation;
@@ -39,5 +40,13 @@ public class InvitationDomainService {
         );
         invitation = invitationRepository.save(invitation);
         return invitation;
+    }
+
+    public List<Invitation> getInvitationsByServerId(String serverId) {
+        if (!serverRepository.existsById(serverId)) {
+            throw new NotFoundException("Server");
+        }
+        
+        return invitationRepository.findByServerId(serverId);
     }
 }

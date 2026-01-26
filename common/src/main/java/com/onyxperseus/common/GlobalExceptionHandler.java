@@ -13,6 +13,7 @@ import com.onyxperseus.common.error.ErrorCode;
 import com.onyxperseus.common.response.ErrorData;
 import com.onyxperseus.common.response.FieldErrorInfo;
 import com.onyxperseus.shared.InvalidValueException;
+import com.onyxperseus.shared.NotFoundException;
 
 import lombok.RequiredArgsConstructor;
 
@@ -46,9 +47,16 @@ public class GlobalExceptionHandler {
     }
 
     @ExceptionHandler(InvalidValueException.class)
-    public ResponseEntity<ApiResponse<Object>> handleDomainException(InvalidValueException ex) {
+    public ResponseEntity<ApiResponse<Object>> handleInvalidValueException(InvalidValueException ex) {
         return ResponseEntity
                 .status(HttpStatus.UNPROCESSABLE_ENTITY)
                 .body(ApiResponse.fail(ex.getErrorType().getMessage(), null));
+    }
+
+    @ExceptionHandler(NotFoundException.class)
+    public ResponseEntity<ApiResponse<ErrorData>> handleNotFoundException(NotFoundException ex) {
+        return ResponseEntity
+                .status(HttpStatus.NOT_FOUND)
+                .body(ApiResponse.fail(ex.getMessage(), null));
     }
 }

@@ -1,5 +1,7 @@
 package com.onyxperseus.server.infrastructure.repository.impl;
 
+import java.util.Optional;
+
 import org.springframework.stereotype.Repository;
 
 import com.onyxperseus.server.domain.model.Server;
@@ -7,6 +9,7 @@ import com.onyxperseus.server.domain.repository.ServerRepository;
 import com.onyxperseus.server.infrastructure.entity.ServerEntity;
 import com.onyxperseus.server.infrastructure.mapper.ServerMapper;
 import com.onyxperseus.server.infrastructure.repository.SpringDataServerRepository;
+import com.onyxperseus.shared.NotFoundException;
 
 import lombok.RequiredArgsConstructor;
 
@@ -25,21 +28,21 @@ public class MongoServerRepository implements ServerRepository {
     }
 
     @Override
-    public Server findById(String id) {
-        ServerEntity serverEntity = findEntityById(id);
-        return serverMapper.toModel(serverEntity);
+    public Optional<Server> findById(String id) {
+        Optional<ServerEntity> serverEntity = findEntityById(id);
+        return serverEntity.map(serverMapper::toModel);
     }
 
     @Override
     public Server update(String id, Server server) {
-        ServerEntity dbServer = findEntityById(id);
+        ServerEntity dbServer = findEntityById(id).orElseThrow(() -> new NotFoundException("Server"));
         ServerEntity newServerEntity = serverMapper.toEntity(server);
         serverMapper.updateEntity(newServerEntity, dbServer);
         return serverMapper.toModel(springDataServerRepository.save(dbServer));
     }
     
-    private ServerEntity findEntityById(String id) {
-        return springDataServerRepository.findById(id).get();
+    private Optional<ServerEntity> findEntityById(String id) {
+        return springDataServerRepository.findById(id);
     }
 
     @Override

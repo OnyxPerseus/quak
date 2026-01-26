@@ -2,6 +2,7 @@ package com.onyxperseus.server.infrastructure.entity;
 
 import java.time.Instant;
 
+import org.bson.types.ObjectId;
 import org.springframework.data.annotation.CreatedDate;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.annotation.LastModifiedDate;
@@ -26,9 +27,9 @@ public class InvitationEntity {
     private String id;
     
     @Indexed
-    private String serverId;
+    private ObjectId serverId;
     
-    private String creatorId;
+    private ObjectId creatorId;
     
     @Indexed(unique = true)
     private String code;
