@@ -22,35 +22,17 @@ public interface InvitationDTOMapper {
     InvitationResource toResource(Invitation invitation);
 
     default Expires toExpires(String expires) {
-        switch (expires) {
-            case "NERVER" -> {
-                return Expires.NEVER;
-            }
-            case "ONE_HOUR" -> {
-                return Expires.ONE_HOUR;
-            }
-            case "ONE_DAY" -> {
-                return Expires.ONE_DAY;
-            }
-            case "SEVEN_DAYS" -> {
-                return Expires.SEVEN_DAYS;
-            }
-            case "ONE_MONTH" -> {
-                return Expires.ONE_MONTH;
-            }
-            default -> {
-                throw new IllegalArgumentException("Giá trị thời hạn không hợp lệ: " + expires);
+
+        for (Expires e : Expires.values()) {
+            if (e.name().equals(expires)) {
+                return e;
             }
         }
+
+        throw new IllegalArgumentException("Invalid expires value: " + expires);
     }
 
     default String fromExpires(Expires expires) {
-        return switch (expires) {
-            case NEVER -> "NEVER";
-            case ONE_HOUR -> "ONE_HOUR";
-            case ONE_DAY -> "ONE_DAY";
-            case SEVEN_DAYS -> "SEVEN_DAYS";
-            case ONE_MONTH -> "ONE_MONTH";
-        };
+        return expires.name();
     }
 }
