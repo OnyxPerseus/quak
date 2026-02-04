@@ -1,14 +1,13 @@
-name: Test project with Maven
+name: Unit Test project
 
 on:
-  pull_request:
-    branches: [ "main", "dev" ]
+  push:
+    branches: [ "feature/*" ]
 
 jobs:
   unit-test:
     name: Unit Test
     runs-on: ubuntu-latest
-    if: github.base_ref == 'dev'
     steps:
     - uses: actions/checkout@v4
     - name: Set up JDK 21
@@ -17,5 +16,5 @@ jobs:
         java-version: '21'
         distribution: 'temurin'
         cache: maven
-    - name: Testing
+    - name: Run test
       run: ./mvnw test
